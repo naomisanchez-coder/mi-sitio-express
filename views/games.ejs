@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Videojuegos</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body class="container">
+  <h3 class="center-align">Registro de Videojuegos Populares</h3>
+  
+  <!-- Formulario de Registro (5 Campos) -->
+  <div class="card-panel">
+    <h5>Agregar Nuevo Videojuego</h5>
+    <form action="/games" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="titulo" type="text" name="titulo" required>
+          <label for="titulo">1. Título del Juego</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="genero" type="text" name="genero" required>
+          <label for="genero">2. Género (Acción, RPG, etc.)</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="plataforma" type="text" name="plataforma" required>
+          <label for="plataforma">3. Plataforma (PC, PS5, etc.)</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="anio" type="number" name="anio" required>
+          <label for="anio">4. Año de Lanzamiento</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="calificacion" type="number" step="0.1" min="0" max="10" name="calificacion" required>
+          <label for="calificacion">5. Calificación (0 - 10)</label>
+        </div>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn blue">Guardar Videojuego</button>
+      <a href="/" class="waves-effect waves-light btn grey">Volver al Inicio</a>
+    </form>
+  </div>
+
+  <!-- Tabla para listar registros -->
+  <h5>Listado de Videojuegos Registrados</h5>
+  <% if (games.length === 0) { %>
+    <p>No hay videojuegos registrados aún.</p>
+  <% } else { %>
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Género</th>
+          <th>Plataforma</th>
+          <th>Año</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% games.forEach(g => { %>
+          <tr>
+            <td><strong><%= g.titulo %></strong></td>
+            <td><%= g.genero %></td>
+            <td><%= g.plataforma %></td>
+            <td><%= g.anio %></td>
+            <td><span class="new badge blue" data-badge-caption=""><%= g.calificacion %>/10</span></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
