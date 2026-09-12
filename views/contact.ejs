@@ -2,27 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Contacto</title>
+  <title>Contacto - StreamFlix</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="container">
-  <h3 class="center-align">Formulario de Contacto</h3>
-  <form action="/contact" method="POST">
-    <div class="input-field">
-      <input id="nombre" type="text" name="nombre" required>
-      <label for="nombre">Nombre</label>
+<body>
+  <nav class="netflix-nav">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo-netflix">STREAMFLIX</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/movies">Catálogo</a></li>
+        <li><a href="/contact">Contacto</a></li>
+        <li><a href="/admin">Mensajes</a></li>
+        <li><a href="/about">Acerca de</a></li>
+      </ul>
     </div>
-    <div class="input-field">
-      <input id="email" type="email" name="email" required>
-      <label for="email">Correo electrónico</label>
+  </nav>
+
+  <div class="container" style="margin-top: 40px;">
+    <div class="netflix-card">
+      <h3 class="center-align">Formulario de Contacto</h3>
+      <form action="/contact" method="POST">
+        <div class="input-field">
+          <input id="nombre" type="text" name="nombre" required>
+          <label for="nombre">Nombre Completo</label>
+        </div>
+        <div class="input-field">
+          <input id="email" type="email" name="email" required>
+          <label for="email">Correo Electrónico</label>
+        </div>
+        <div class="input-field">
+          <textarea id="mensaje" class="materialize-textarea" name="mensaje" required></textarea>
+          <label for="mensaje">Mensaje</label>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light btn-netflix">Enviar Mensaje</button>
+        <a href="/" class="btn waves-effect waves-light btn-grey-netflix">Cancelar</a>
+      </form>
     </div>
-    <div class="input-field">
-      <textarea id="mensaje" class="materialize-textarea" name="mensaje" required></textarea>
-      <label for="mensaje">Mensaje</label>
-    </div>
-    <button type="submit" class="waves-effect waves-light btn">Enviar</button>
-    <a href="/" class="waves-effect waves-light btn grey">Volver</a>
-  </form>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

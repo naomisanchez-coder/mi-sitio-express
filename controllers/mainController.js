@@ -1,9 +1,13 @@
 // Almacenamiento en memoria
 const messages = [];
-const games = []; // Registros de temática a libre criterio
+const movies = [
+  { titulo: "Pulp Fiction", tipo: "Película", genero: "Crimen / Drama", anio: 1994, calificacion: "8.9" },
+  { titulo: "Stranger Things", tipo: "Serie", genero: "Sci-Fi / Horror", anio: 2016, calificacion: "8.7" },
+  { titulo: "El Padrino", tipo: "Película", genero: "Crimen", anio: 1972, calificacion: "9.2" }
+];
 
-const home = (req, res) => res.render("home", { title: "Inicio" });
-const about = (req, res) => res.render("about", { title: "Acerca de" });
+const home = (req, res) => res.render("home", { title: "CineVintage - Inicio", movies });
+const about = (req, res) => res.render("about", { title: "Acerca de CineVintage" });
 
 const contact = (req, res) => res.render("contact");
 
@@ -15,13 +19,13 @@ const saveContact = (req, res) => {
 
 const admin = (req, res) => res.render("admin", { messages });
 
-// Controlador para la sección libre (Videojuegos)
-const gamesPage = (req, res) => res.render("games", { games });
+// Controlador de Películas y Series
+const moviesPage = (req, res) => res.render("movies", { movies });
 
-const saveGame = (req, res) => {
-  const { titulo, genero, plataforma, anio, calificacion } = req.body;
-  games.push({ titulo, genero, plataforma, anio, calificacion });
-  res.redirect("/games");
+const saveMovie = (req, res) => {
+  const { titulo, tipo, genero, anio, calificacion } = req.body;
+  movies.push({ titulo, tipo, genero, anio, calificacion });
+  res.redirect("/movies");
 };
 
 module.exports = {
@@ -30,6 +34,6 @@ module.exports = {
   contact,
   saveContact,
   admin,
-  gamesPage,
-  saveGame
+  moviesPage,
+  saveMovie
 };

@@ -2,25 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Admin</title>
+  <title>Buzón de Mensajes - StreamFlix</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="container">
-  <h3 class="center-align">Mensajes recibidos</h3>
-  <a href="/contact" class="waves-effect waves-light btn margin-bottom">Ir al formulario</a>
-  <a href="/" class="waves-effect waves-light btn grey">Inicio</a>
-  <% if (messages.length === 0) { %>
-    <p>No hay mensajes aún.</p>
-  <% } else { %>
-    <ul class="collection">
-      <% messages.forEach(m => { %>
-        <li class="collection-item">
-          <strong><%= m.nombre %></strong> (<%= m.email %>)<br>
-          <em><%= m.mensaje %></em>
-        </li>
-      <% }) %>
-    </ul>
-  <% } %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<body>
+  <nav class="netflix-nav">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo-netflix">STREAMFLIX</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/movies">Catálogo</a></li>
+        <li><a href="/contact">Contacto</a></li>
+        <li><a href="/admin">Mensajes</a></li>
+        <li><a href="/about">Acerca de</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top: 40px;">
+    <div class="netflix-card">
+      <h3 class="center-align">Buzón Admin - Mensajes Recibidos</h3>
+      <% if (messages.length === 0) { %>
+        <p class="center-align" style="color: #b3b3b3;">No hay mensajes registrados en el sistema.</p>
+      <% } else { %>
+        <ul class="collection">
+          <% messages.forEach(m => { %>
+            <li class="collection-item">
+              <strong style="color: #ffffff; font-size: 1.1rem;"><%= m.nombre %></strong> 
+              <span style="color: #E50914;">(<%= m.email %>)</span><br>
+              <em style="color: #d1d1d1;">"<%= m.mensaje %>"</em>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+      <div class="center-align" style="margin-top: 20px;">
+        <a href="/contact" class="btn waves-effect waves-light btn-netflix">Ir al Formulario</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

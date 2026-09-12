@@ -2,26 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio</title>
+  <title>StreamFlix - Inicio</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <nav class="blue darken-3">
+  <!-- Navbar Netflix -->
+  <nav class="netflix-nav">
     <div class="nav-wrapper container">
-      <a href="/" class="brand-logo">MiSitioExpress</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <a href="/" class="brand-logo-netflix">STREAMFLIX</a>
+      <ul class="right hide-on-med-and-down">
         <li><a href="/">Inicio</a></li>
-        <li><a href="/about">Acerca de</a></li>
+        <li><a href="/movies">Catálogo</a></li>
         <li><a href="/contact">Contacto</a></li>
-        <li><a href="/admin">Admin</a></li>
-        <li><a href="/games">Videojuegos</a></li>
+        <li><a href="/admin">Mensajes</a></li>
+        <li><a href="/about">Acerca de</a></li>
       </ul>
     </div>
   </nav>
-  <div class="container center-align" style="margin-top: 50px;">
-    <h2>Bienvenido a la Página de Inicio</h2>
-    <p class="flow-text">Proyecto Express integrado con EJS y Materialize CSS.</p>
-    <a href="/games" class="btn-large waves-effect waves-light blue">Ver Catálogo de Videojuegos</a>
+
+  <div class="container" style="margin-top: 30px;">
+    <!-- Hero Banner -->
+    <div class="hero-banner center-align">
+      <h1 class="hero-title">Películas y Series Ilimitadas</h1>
+      <p class="hero-subtitle">Gestiona tu propio catálogo interactivo con Express y Node.js</p>
+      <a href="/movies" class="btn-large waves-effect waves-light btn-netflix">Explorar Catálogo</a>
+    </div>
+
+    <!-- Carril Horizontal de Contenido (Netflix Rail) -->
+    <div class="rail-section">
+      <h4 class="rail-title">🔥 Tendencias en Catalogo</h4>
+      <div class="movie-rail">
+        <% if (movies.length === 0) { %>
+          <p style="color: #b3b3b3;">No hay títulos en el carril. ¡Agrega algunos en la sección Catálogo!</p>
+        <% } else { %>
+          <% movies.forEach(m => { %>
+            <div class="movie-card-rail">
+              <div class="movie-card-body">
+                <span class="badge-type"><%= m.tipo %></span>
+                <span class="badge-rating right">⭐ <%= m.calificacion %></span>
+                <h5 class="movie-card-title"><%= m.titulo %></h5>
+                <p class="movie-card-info"><strong>Género:</strong> <%= m.genero %></p>
+                <p class="movie-card-info"><strong>Año:</strong> <%= m.anio %></p>
+              </div>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </div>
   </div>
 </body>
 </html>

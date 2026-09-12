@@ -5,13 +5,13 @@ const mainController = require("../controllers/mainController");
 router.get("/", mainController.home);
 router.get("/about", mainController.about);
 
-// Rutas de contacto y administración
+// Rutas de Contacto y Admin
 router.get("/contact", mainController.contact);
 router.post("/contact", mainController.saveContact);
 router.get("/admin", mainController.admin);
 
-// Rutas para la vista libre (Videojuegos)
-router.get("/games", mainController.gamesPage);
-router.post("/games", mainController.saveGame);
+// Rutas de Catálogo Películas / Series (Vista libre criterio)
+router.get("/movies", mainController.moviesPage);
+router.post("/movies", mainController.saveMovie);
 
 module.exports = router;
